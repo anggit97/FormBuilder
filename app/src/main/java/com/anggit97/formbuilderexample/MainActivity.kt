@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         formElementMutableList.add(
-            FormButton().setBackgroundColor(R.color.colorPrimary).setTitle("Enter")
+            FormButton().setBackgroundColor(R.color.colorPrimary).setTitle("Enter").setTextColor(R.color.colorWhite)
         )
 
         formBuilder.build(formElementMutableList)
