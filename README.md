@@ -1,8 +1,6 @@
 # FORM BUILDER
 Never this easy to easy to create form in Android
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 this library to create form in andorid
@@ -24,6 +22,88 @@ dependencies {
     implementation 'com.github.anggit97:FormBuilder:0.1.0'
 }
 ```
+
+# Usage
+1. Create parent layout to accomodate views you want to show
+```sh
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"/>
+```
+2. initialize FormBuilder Class in your actvity
+```sh
+private val formBuilder: FormBuilder by lazy {
+    FormBuilder(this, rootLayout)
+}
+```
+3. initialize list of form object
+```sh
+private val formElementMutableList = mutableListOf<FormObject>()
+```
+4. add form element to list of form object
+```sh
+formElementMutableList.add(
+    FormElement().setTitle("Name").setType(FormElement.Type.TEXT).setHint("Enter your name")
+)
+
+formElementMutableList.add(
+    FormElement().setTitle("Password").setType(FormElement.Type.PASSWORD).setHint("Enter your password")
+)
+
+formElementMutableList.add(
+    FormElement().setTitle("Email").setType(FormElement.Type.EMAIL).setHint("Enter your email")
+)
+
+formElementMutableList.add(
+    FormButton().setBackgroundColor(R.color.colorPrimary).setTitle("Enter")
+)
+
+```
+5. add form element to FormBuilder build method
+```sh
+formBuilder.build(formElementMutableList)
+```
+6. Thats it, here full code
+```sh
+class MainActivity : AppCompatActivity() {
+
+    private val formBuilder: FormBuilder by lazy {
+        FormBuilder(this, rootLayout)
+    }
+
+    private val formElementMutableList = mutableListOf<FormObject>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        formElementMutableList.add(
+            FormElement().setTitle("Name").setType(FormElement.Type.TEXT).setHint("Enter your name")
+        )
+
+        formElementMutableList.add(
+            FormElement().setTitle("Password").setType(FormElement.Type.PASSWORD).setHint("Enter your password")
+        )
+
+        formElementMutableList.add(
+            FormElement().setTitle("Email").setType(FormElement.Type.EMAIL).setHint("Enter your email")
+        )
+
+        formElementMutableList.add(
+            FormButton().setBackgroundColor(R.color.colorPrimary).setTitle("Enter")
+        )
+
+        formBuilder.build(formElementMutableList)
+    }
+}
+```
+7. result
+
 
 # Features!
 

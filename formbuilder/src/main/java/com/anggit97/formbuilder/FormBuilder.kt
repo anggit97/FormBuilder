@@ -295,7 +295,7 @@ class FormBuilder(private val context: Context, private val linearLayout: Linear
         }
 
         formButton.runnable?.let {
-            button.setOnClickListener { it.run {  } }
+            button.setOnClickListener { it.run { } }
         }
 
         formButton.backgroundResource?.let {
@@ -312,7 +312,7 @@ class FormBuilder(private val context: Context, private val linearLayout: Linear
             LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
         )
         layoutParams.setMargins(8, 8, 8, 8)
-        view!!.layoutParams = params ?: layoutParams
+        view?.layoutParams = params ?: layoutParams
         linearLayout.addView(view)
     }
 
