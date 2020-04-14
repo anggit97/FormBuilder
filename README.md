@@ -105,6 +105,38 @@ class MainActivity : AppCompatActivity() {
 7. result
 ![Result 1](https://github.com/anggit97/FormBuilder/blob/master/screenshot/result1.jpg)
 
+# Retrieve Values
+Values inserted are saved inside a map of the object FormBuilder, using tags as key.
+```sh
+String textValue = formBuilder.formMap.get("tagKey").getValue();
+```
+
+# Validation
+To make a validation simply call
+```sh
+val isValid = formBuilder.validate();
+```
+This will show an error on all forms that has been set as required.
+It's possible to change error content on each form element.
+```sh
+formObjects.add(new FormElement()
+      .setTag("tagKey")
+      .setHint("Text")
+      .setType(FormElement.Type.TEXT)
+      .setErrorMessage("You can learn from this error"));
+```
+Every form element can accept a customized code for its validation.
+```sh
+final FormElement formElement = new FormElement().setTag("view").setHint("view").setType(FormElement.Type.TEXTVIEW));
+formElement.setFormValidation(new FormValidation() {
+				  @Override
+				  public boolean validate() {
+				      return formElement.getValue().length() > 5;
+				  }
+			      }
+).setErrorMessage("Too short");
+```
+
 # Features!
 
   - Support create field like (TEXT, TEXTVIEW, EMAIL, PASSWORD, PHONE, NUMBER, URL, SPINNER,ZIP,SELECTION, MULTIPLE_SELECTION, DATE, TIME), Button, and Header
