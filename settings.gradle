@@ -1,0 +1,3 @@
+rootProject.name='FormBuilderExample'
+include ':app'
+include ':formbuilder'
