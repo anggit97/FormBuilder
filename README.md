@@ -108,13 +108,13 @@ class MainActivity : AppCompatActivity() {
 # Retrieve Values
 Values inserted are saved inside a map of the object FormBuilder, using tags as key.
 ```sh
-val textValue = formBuilder.formMap.get("tagKey").getValue();
+val textValue = formBuilder.formMap.get("tagKey").getValue()
 ```
 
 # Validation
 To make a validation simply call
 ```sh
-val isValid = formBuilder.validate();
+val isValid = formBuilder.validate()
 ```
 This will show an error on all forms that has been set as required.
 It's possible to change error content on each form element.
@@ -123,18 +123,18 @@ formObjects.add(FormElement()
       .setTag("tagKey")
       .setHint("Text")
       .setType(FormElement.Type.TEXT)
-      .setErrorMessage("You can learn from this error"));
+      .setErrorMessage("You can learn from this error"))
 ```
 Every form element can accept a customized code for its validation.
 ```sh
-val formElement = FormElement().setTag("view").setHint("view").setType(FormElement.Type.TEXTVIEW));
+val formElement = FormElement().setTag("view").setHint("view").setType(FormElement.Type.TEXTVIEW))
 formElement.setFormValidation(object : FormValidation() {
 				  
 				  override validate(): Boolean {
 				      return formElement.getValue().length() > 5;
 				  }
 			      }
-).setErrorMessage("Too short");
+).setErrorMessage("Too short")
 ```
 
 # Features!
